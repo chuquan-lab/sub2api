@@ -52,3 +52,18 @@ jobs:
           tags: |
             baochuquan/sub2api:latest
             baochuquan/sub2api:${{ github.sha }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd ~/sub2api
+            docker compose pull
+            docker compose up -d
