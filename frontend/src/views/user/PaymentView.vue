@@ -39,10 +39,11 @@
             </div>
             <div class="card overflow-hidden p-0">
               <iframe
-                src="https://pay.ldxp.cn/shop/D2WF61SM"
+                :src="rechargeIframeSrc"
                 class="w-full border-0"
                 style="height: 600px; min-height: 500px;"
                 allow="payment"
+                allowfullscreen
                 sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation"
               />
             </div>
@@ -443,6 +444,14 @@ const tabs = computed(() => {
   if (!checkout.value.balance_disabled) result.push({ key: 'recharge', label: t('payment.tabTopUp') })
   result.push({ key: 'subscription', label: t('payment.tabSubscribe') })
   return result
+})
+
+const rechargeIframeSrc = computed(() => {
+  const base = 'https://pay.ldxp.cn/shop/D2WF61SM'
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyOTQsImVtYWlsIjoiYmFvY2h1cXVhbkAxNjMuY29tIiwicm9sZSI6InVzZXIiLCJ0b2tlbl92ZXJzaW9uIjo1NDY3NTA4MzkyNjczMzgzNDcyLCJleHAiOjE3ODI3MTkwNDQsIm5iZiI6MTc4MjYzMjY0NCwiaWF0IjoxNzgyNjMyNjQ0fQ.IHxFdTk9Fb6VeaOOW3iluRR0Xy8reZyxApNRA3IBDu4'
+  const srcHost = typeof window !== 'undefined' ? window.location.origin : ''
+  const srcUrl = typeof window !== 'undefined' ? window.location.href : ''
+  return `${base}?user_id=294&token=${token}&theme=dark&lang=zh&ui_mode=embedded&src_host=${encodeURIComponent(srcHost)}&src_url=${encodeURIComponent(srcUrl)}`
 })
 
 const visibleMethods = computed(() => getVisibleMethods(checkout.value.methods))
