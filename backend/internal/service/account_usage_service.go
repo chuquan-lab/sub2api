@@ -974,6 +974,15 @@ func (s *AccountUsageService) addWindowStats(ctx context.Context, account *Accou
 	if usage.FiveHour != nil {
 		usage.FiveHour.WindowStats = windowStats
 	}
+
+	// 为 SevenDay 添加 WindowStats（7d 窗口统计，单独查询）
+	if usage.SevenDay != nil {
+		now := time.Now()
+		sevenDayStart := codexWindowStatsStart(usage.SevenDay, 7*24*time.Hour, now)
+		if stats7d, err := s.usageLogRepo.GetAccountWindowStats(ctx, account.ID, sevenDayStart); err == nil {
+			usage.SevenDay.WindowStats = windowStatsFromAccountStats(stats7d)
+		}
+	}
 }
 
 // GetTodayStats 获取账号今日统计
