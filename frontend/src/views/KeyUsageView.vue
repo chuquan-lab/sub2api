@@ -11,6 +11,7 @@
         </router-link>
         <div class="flex items-center gap-3">
           <LocaleSwitcher />
+          <CustomerServiceButton />
           <a
             v-if="docUrl"
             :href="docUrl"
@@ -420,6 +421,7 @@
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAppStore } from '@/stores'
+import CustomerServiceButton from '@/components/common/CustomerServiceButton.vue'
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue'
 import Icon from '@/components/icons/Icon.vue'
 

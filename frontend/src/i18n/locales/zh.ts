@@ -249,6 +249,13 @@ export default {
 
   // Common
   common: {
+    customerService: {
+      label: '客服',
+      open: '联系客服',
+      title: '客服',
+      imageAlt: '用户交流群二维码',
+      scanHint: '扫码进入用户交流群'
+    },
     loading: '加载中...',
     submitting: '提交中...',
     justNow: '刚刚',

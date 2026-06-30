@@ -249,6 +249,13 @@ export default {
 
   // Common
   common: {
+    customerService: {
+      label: 'Support',
+      open: 'Contact support',
+      title: 'Support',
+      imageAlt: 'User group QR code',
+      scanHint: 'Scan to join the user group'
+    },
     loading: 'Loading...',
     submitting: 'Submitting...',
     justNow: 'just now',

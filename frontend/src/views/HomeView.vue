@@ -51,6 +51,8 @@
           <!-- Language Switcher -->
           <LocaleSwitcher />
 
+          <CustomerServiceButton />
+
           <!-- Doc Link -->
           <a
             v-if="docUrl"
@@ -408,6 +410,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore, useAppStore } from '@/stores'
+import CustomerServiceButton from '@/components/common/CustomerServiceButton.vue'
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue'
 import Icon from '@/components/icons/Icon.vue'
 
