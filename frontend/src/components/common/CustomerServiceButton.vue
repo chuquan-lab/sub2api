@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<{
 const { t } = useI18n()
 
 const showDialog = ref(false)
-const customerServiceQrUrl = 'https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/onetokenicu/IMG_9654.jpg'
+const customerServiceQrUrl = 'https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/onetokenicu/one-token-icu.png'
 
 const showLabel = computed(() => props.variant === 'nav')
 const iconSize = computed(() => props.variant === 'nav' ? 'sm' : 'md')
